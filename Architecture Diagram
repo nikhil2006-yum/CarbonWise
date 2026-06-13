@@ -1,0 +1,13 @@
+## 🏗️ System Architecture
+
+```text
+User Input
+      ↓
+Python Carbon Calculator
+      ↓
+Dify Workflow
+      ↓
+Gemini AI Analysis
+      ↓
+CarbonWise Sustainability Report
+```
