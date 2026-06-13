@@ -1,4 +1,4 @@
-ef main(
+def main(
     transport_km: str,
     electricity_kwh: str,
     flights: str,
