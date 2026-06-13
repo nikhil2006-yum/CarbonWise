@@ -1,0 +1,50 @@
+ef main(
+    transport_km: str,
+    electricity_kwh: str,
+    flights: str,
+    diet_type: str,
+    household_size: str
+):
+
+    transport = float(transport_km)
+    electricity = float(electricity_kwh)
+    flight_count = float(flights)
+
+    transport_co2 = transport * 0.192
+    electricity_co2 = electricity * 0.82
+    flight_co2 = flight_count * 250
+
+    if diet_type.lower() == "vegan":
+        food_co2 = 50
+    elif diet_type.lower() == "vegetarian":
+        food_co2 = 100
+    else:
+        food_co2 = 300
+
+    total_co2 = transport_co2 + electricity_co2 + flight_co2 + food_co2
+
+    score = max(0, min(100, round(100 - total_co2 / 20)))
+
+    if score >= 80:
+        grade = "A"
+        badge = "Gold"
+    elif score >= 60:
+        grade = "B"
+        badge = "Silver"
+    elif score >= 40:
+        grade = "C"
+        badge = "Bronze"
+    else:
+        grade = "D"
+        badge = "Needs Improvement"
+
+    return {
+        "transport_co2": round(transport_co2, 2),
+        "electricity_co2": round(electricity_co2, 2),
+        "flight_co2": round(flight_co2, 2),
+        "food_co2": round(food_co2, 2),
+        "total_co2": round(total_co2, 2),
+        "score": score,
+        "grade": grade,
+        "badge": badge
+    }
